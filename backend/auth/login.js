@@ -2,12 +2,6 @@ function login() {
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
 
-    if (!emailInput || !passwordInput) {
-        console.error("Login fields are missing.");
-        alert("Login form is not loading correctly. Please refresh the page.");
-        return;
-    }
-
     const email = emailInput.value;
     const password = passwordInput.value;
 
