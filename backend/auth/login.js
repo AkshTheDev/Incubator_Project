@@ -1,9 +1,9 @@
 function login() {
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const target = document.querySelector('.empty_div')
 
-    const email = emailInput.value;
-    const password = passwordInput.value;
+    target.innerHTML = "";
 
     if (!email || !password) {
         alert("Please enter both email and password!");
@@ -20,7 +20,7 @@ function login() {
         if (data.error) {
             throw new Error(data.error);
         }
-        alert(data.message);
+        target.innerHTML = "<p style='color: green;'>" + data.message + "</p>";
         window.location.href = "dashboard.html";
     })
     .catch(error => {

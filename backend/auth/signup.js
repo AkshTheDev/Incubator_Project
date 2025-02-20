@@ -3,9 +3,12 @@ function signup() {
     const last_name = document.getElementById('last_name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const target = document.querySelector('.empty_div')
+
+    target.innerHTML = "";
 
     if (!first_name || !last_name || !email || !password) {
-        alert("Please fill in all fields!");
+        target.innerHTML="<p style='color: red'>Please fill in all fields!</p>"
         return;
     }
 
@@ -23,10 +26,15 @@ function signup() {
         return response.json();
     })
     .then(data => {
-        alert(data.message || data.error);
         if (data.message) {
-            window.location.href = "login.html";
-        }``
+            target.innerHTML = "<p style='color: green;'>" + data.message + "</p>";
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 1500);
+        }
+        else {
+            alert(data.error)
+        }
     })
     .catch(error => {
         console.error('Error:', error);
