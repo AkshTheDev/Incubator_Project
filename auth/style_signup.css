@@ -1,0 +1,34 @@
+.sequence{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20%;
+    background-color: antiquewhite;
+    box-shadow: 10px 10px 20px red;
+    width: 500px;
+    margin-left: 32%;
+}
+
+.diff_divs{
+    margin-top: 20px;
+}
+
+.name{
+    display: flex;
+}
+
+.submit{
+    margin-top: 20px;
+}
+
+#email{
+    width: 290px;
+}
+
+#password{
+    width: 290px;
+}
+
+.diff_divss{
+    margin-left: 3px;
+}
