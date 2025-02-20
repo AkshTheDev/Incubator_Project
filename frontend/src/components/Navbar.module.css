@@ -1,10 +1,11 @@
 .navcontainer{
     background-color:rgb(255, 255, 255);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    width: 70rem;
-    height: 5rem;
+    width: 100%;
+    height: 60px;
+    padding-right: 10px;
     /* gap:rem; */
 }
 .header{
@@ -15,32 +16,43 @@
     margin:1rem;
     border-radius: 10px;
     box-shadow: rgba(39, 37, 54, 0.1) 0px 0px 16px 0px;
+    padding: 5px;
+    z-index: 1000;
 }
 .listbox{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color:rgb(255, 255, 255);
-    width: 30rem;
-    height: 5rem;
+    
+    min-height: 60px;
     list-style-type: none;
     gap:1px;
     margin: 0;
 }
 .buttonbox{
     background-color: rgb(0, 0, 0);
-    padding: 0.5rem 3rem;
+    padding: 0.5rem;
     border-radius: 5px;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    padding-left: 1rem;
     
 }
+
 .buttonbox:hover{
     background-color: rgb(55, 54, 54);
 }
+.buttonbox a{
+    text-decoration:none;
+    display: flex;
+    font-weight: 500;
+    color:rgb(255, 255, 255);
+    align-items: center;
+    gap: 15px;  
+}
 li{
-    padding: 1.25rem 5rem;
+    padding: 1rem 2rem;
     gap:1px;
 
 }
@@ -60,16 +72,9 @@ li{
     
 
 }
-.buttonbox a{
-    text-decoration:none;
-    display: flex;
-    font-weight: 500;
-    color:rgb(255, 255, 255);
-    align-items: center;
-    gap: 2rem;
-}
 .logo{
-    width: 20rem;
+    width: 10rem;
+    height: auto;
     display: flex;
     align-items: center;
     

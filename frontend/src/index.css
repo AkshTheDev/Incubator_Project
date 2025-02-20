@@ -5,4 +5,11 @@
     font-family: Generalsans, sans-serif;
     font-size: large;
     
+    
+}
+:root{
+    --akshansh: blue
+}
+body{
+    background-color: rgba(0, 0, 0, 0.089);
 }
