@@ -22,6 +22,7 @@ def signup():
         if not data:
                 return jsonify({"error": "No data received"}), 400 
         print("Received data:", data)
+        username=data['username']
         first_name=data['first_name']
         last_name = data['last_name']
         email = data['email']
@@ -33,15 +34,21 @@ def signup():
         existing_user = cursor.fetchone()
 
         if existing_user:
-            return jsonify({"error": "Email already registered"}), 400 
+            return jsonify({"error": "Email already registered"}), 400
 
-        cursor.execute("INSERT INTO register (first_name, last_name, email_id, password) VALUES (%s, %s, %s, %s)",
-                        (first_name, last_name, email, password_hash))
+        cursor.execute("SELECT * FROM register WHERE username = %s",(username,))
+        existing_user = cursor.fetchone()
+
+        if existing_user:
+            return jsonify({"error": "Username already registered"}), 400
+
+        cursor.execute("INSERT INTO register (username, first_name, last_name, email_id, password) VALUES (%s, %s, %s, %s, %s)",
+                        (username, first_name, last_name, email, password_hash))
         db.commit()
         return jsonify({"message": "User registered successfully"}), 201
 
     except mysql.connector.IntegrityError:
-        return jsonify({"error": "Email already registered"}), 400
+        return jsonify({"error": "Email or Username already registered"}), 400
     
     except Exception as e:
         print("Signup Error:", e) 
