@@ -16,6 +16,23 @@ db = mysql.connector.connect(
 )
 cursor=db.cursor()
 
+@app.route('/check-username', methods=['GET'])
+def check_username():
+    try:
+        username = request.args.get('username')
+        cursor.execute("SELECT username FROM register WHERE username = %s", (username,))
+        existing_user = cursor.fetchone()
+
+        if existing_user:
+            return jsonify({"available": False, "message": "Username already taken"}), 200
+        else:
+            return jsonify({"available": True, "message": "Username is available"}), 200
+
+    except Exception as e:
+        print("Username Check Error:", e)
+        return jsonify({"error": "Something went wrong"}), 500
+
+
 @app.route('/signup', methods=['POST'])
 def signup():
     try:
@@ -37,12 +54,6 @@ def signup():
 
         if existing_user:
             return jsonify({"error": "Email already registered"}), 400
-
-        cursor.execute("SELECT * FROM register WHERE username = %s",(username,))
-        existing_user = cursor.fetchone()
-
-        if existing_user:
-            return jsonify({"error": "Username already registered"}), 400
 
         cursor.execute("INSERT INTO register (user_id, username, first_name, last_name, email_id, password) VALUES (%s, %s, %s, %s, %s, %s)",
                         (user_id, username, first_name, last_name, email, password_hash))
