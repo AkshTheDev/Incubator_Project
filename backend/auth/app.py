@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import mysql.connector
 from flask_cors import CORS
 import bcrypt
+import uuid 
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -22,6 +23,7 @@ def signup():
         if not data:
                 return jsonify({"error": "No data received"}), 400 
         print("Received data:", data)
+        user_id = str(uuid.uuid4())
         username=data['username']
         first_name=data['first_name']
         last_name = data['last_name']
@@ -42,8 +44,8 @@ def signup():
         if existing_user:
             return jsonify({"error": "Username already registered"}), 400
 
-        cursor.execute("INSERT INTO register (username, first_name, last_name, email_id, password) VALUES (%s, %s, %s, %s, %s)",
-                        (username, first_name, last_name, email, password_hash))
+        cursor.execute("INSERT INTO register (user_id, username, first_name, last_name, email_id, password) VALUES (%s, %s, %s, %s, %s, %s)",
+                        (user_id, username, first_name, last_name, email, password_hash))
         db.commit()
         return jsonify({"message": "User registered successfully"}), 201
 
