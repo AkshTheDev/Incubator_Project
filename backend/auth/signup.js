@@ -46,35 +46,6 @@ function signup() {
     });
 }
 
-
-// function checkUsername() {
-//     const username = document.getElementById('username').value;
-//     const statusDiv = document.getElementById('username_status');
-
-    // if (username.length < 3) {
-    //     statusDiv.innerHTML = "Username must be at least 3 characters.";
-    //     statusDiv.style.color = "red";
-    //     return;
-    // }
-
-//     fetch(`http://127.0.0.1:3000/check-username?username=${username}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.exists) {
-//                 statusDiv.innerHTML = "❌ Username already taken";
-//                 statusDiv.style.color = "red";
-//             } else {
-//                 statusDiv.innerHTML = "✅ Username available";
-//                 statusDiv.style.color = "green";
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//             statusDiv.innerHTML = "Error checking username.";
-//             statusDiv.style.color = "red";
-//         });
-// }
-
 document.getElementById("username").addEventListener("input", function() {
     checkUsernameAvailability(this.value);
 });
