@@ -21,7 +21,9 @@ function login() {
             throw new Error(data.error);
         }
         target.innerHTML = "<p style='color: green;'>" + data.message + "</p>";
-        window.location.href = "dashboard.html";
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 1500);
     })
     .catch(error => {
         console.error('Error:', error);
