@@ -1,4 +1,5 @@
 function signup() {
+    const username = document.getElementById('username').value;
     const first_name = document.getElementById('first_name').value;
     const last_name = document.getElementById('last_name').value;
     const email = document.getElementById('email').value;
@@ -7,7 +8,7 @@ function signup() {
 
     target.innerHTML = "";
 
-    if (!first_name || !last_name || !email || !password) {
+    if (!first_name || !last_name || !email || !password || !username) {
         target.innerHTML="<p style='color: red'>Please fill in all fields!</p>"
         return;
     }
@@ -17,7 +18,7 @@ function signup() {
     fetch('http://127.0.0.1:3000/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ first_name, last_name, email, password })
+        body: JSON.stringify({ username, first_name, last_name, email, password })
     })
     .then(response => {
         if (!response.ok) {
