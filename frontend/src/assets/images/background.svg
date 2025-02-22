@@ -1,0 +1,45 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Gradient for the first diagonal line -->
+      <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FF61D8" stop-opacity="0.2"/>
+        <stop offset="100%" stop-color="#6B8BFF" stop-opacity="0.2"/>
+      </linearGradient>
+      
+      <!-- Gradient for the second diagonal line -->
+      <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#31E1F7" stop-opacity="0.2"/>
+        <stop offset="100%" stop-color="#FF9B82" stop-opacity="0.2"/>
+      </linearGradient>
+      
+      <pattern id="criss-cross" 
+               x="0" y="0" 
+               width="40" 
+               height="40" 
+               patternUnits="userSpaceOnUse">
+        <!-- Background square for each pattern unit -->
+        <rect x="0" y="0" 
+              width="40" height="40" 
+              fill="#ffffff"/>
+        
+        <!-- First diagonal line with gradient -->
+        <line x1="5" y1="5" 
+              x2="35" y2="35" 
+              stroke="url(#gradient1)" 
+              stroke-width="3"
+              stroke-linecap="round"/>
+        
+        <!-- Second diagonal line with gradient -->
+        <line x1="35" y1="5" 
+              x2="5" y2="35" 
+              stroke="url(#gradient2)" 
+              stroke-width="3"
+              stroke-linecap="round"/>
+      </pattern>
+    </defs>
+  
+    <!-- Background with pattern -->
+    <rect x="0" y="0" 
+          width="200" height="200" 
+          fill="url(#criss-cross)"/>
+  </svg>
