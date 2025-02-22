@@ -1,8 +1,9 @@
-import NavbarCSS from "../components/Navbar.module.css";
-import arrow from "../images/arrow.svg";
-import logo from "../images/logo.svg";
+import NavbarCSS from "./Navbar.module.css";
+import arrow from "../../assets/images/arrow.svg";
+import logo from "../../assets/images/logo.svg";
 function Navbar() {
   const links = ["About", "Pricing", "Support"];
+  
   return (
     <div className={NavbarCSS.header}>
       <div>
@@ -13,10 +14,11 @@ function Navbar() {
 
       <nav className={NavbarCSS.navcontainer}>
         <ul className={NavbarCSS.listbox}>
-          {links.map((item) => {
+          {links.map((item,index) => {
             return (
               <div className={NavbarCSS.listshadow}>
-                <li>{item}</li>
+                <a href="blank"> <li>{item}</li></a>
+               
               </div>
             );
           })}

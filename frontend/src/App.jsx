@@ -1,10 +1,10 @@
-import AppCss from './App.module.css'
-import LandingPage from "../src/pages/LandingPage"
+import AppCss from './styles/App.module.css'
+import Home from './pages/Home'
 function App() {
 
   return (
     <div className={AppCss.page}>
-        <LandingPage/>
+        <Home/>
     </div>
      
     

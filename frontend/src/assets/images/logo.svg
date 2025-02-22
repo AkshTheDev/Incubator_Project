@@ -1,0 +1,41 @@
+<svg viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background elements -->
+  <path d="M40 70 Q 60 20, 80 70 T 120 70" 
+        fill="none" 
+        stroke="#FFFFFF" 
+        stroke-width="2"
+        class="wavy-line"/>
+  
+  <!-- Main text -->
+  <text x="50" y="65" 
+        font-family="Arial, sans-serif" 
+        font-size="48" 
+        font-weight="bold"
+        fill="#2D3748">
+    Scr<tspan fill="#4A5568">ippy</tspan>
+  </text>
+  
+  <!-- Decorative dot -->
+  <circle cx="250" y="65" r="6" fill="#4A5568">
+    <animate attributeName="r"
+             values="6;8;6"
+             dur="2s"
+             repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Underline/coding element -->
+  <path d="M 50 75 L 250 75" 
+        stroke="#4A5568" 
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-dasharray="2,8"/>
+        
+  <!-- Decorative coding symbols -->
+  <text x="260" y="65" 
+        font-family="monospace" 
+        font-size="24" 
+        fill="#2D3748"
+        opacity="0.5">
+    { }
+  </text>
+</svg>
