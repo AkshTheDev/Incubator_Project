@@ -45,3 +45,30 @@ function signup() {
         document.querySelector(".submit").disabled = false;
     });
 }
+
+document.getElementById("username").addEventListener("input", function() {
+    checkUsernameAvailability(this.value);
+});
+
+function checkUsernameAvailability(username) {
+    const statusDiv = document.getElementById('username_status');
+
+    if (username.length < 3) {
+        statusDiv.innerHTML = "Username must be at least 3 characters.";
+        statusDiv.style.color = "red";
+        return;
+    }
+
+    fetch(`http://127.0.0.1:3000/check-username?username=${username}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.available) {
+            statusDiv.innerHTML = "✅ Username is available!";
+            statusDiv.style.color = "green";
+        } else {
+            statusDiv.innerHTML = "❌ Username already taken!";
+            statusDiv.style.color = "red";
+        }
+    })
+    .catch(error => console.error("Error checking username:", error));
+}
