@@ -1,6 +1,9 @@
+import HeroSectionCSS from './HeroSection.module.css'
 function HeroSection(){
     return(
-        <h1>this is HeroSection</h1>
+        <section className={HeroSectionCSS.featurepage}>
+
+        </section>
     )
 }
 export default HeroSection

@@ -16,7 +16,7 @@ function Navbar() {
         <ul className={NavbarCSS.listbox}>
           {links.map((item,index) => {
             return (
-              <div className={NavbarCSS.listshadow}>
+              <div className={NavbarCSS.listshadow} key={index}>
                 <a href="blank"> <li>{item}</li></a>
                
               </div>
