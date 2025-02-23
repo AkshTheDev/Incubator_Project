@@ -66,7 +66,7 @@ li{
 
 }
 .listshadow:hover{
-    background-color: rgba(244, 209, 214, 0.707);
+    background-color: #f0f0f0;
     border-radius: 5px;
 }
 .listshadow a{
