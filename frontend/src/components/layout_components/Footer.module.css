@@ -1,0 +1,21 @@
+.MainContainer{
+    display: flex;
+    justify-content: space-evenly;
+    gap:20px;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+.footerTop{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    
+}
+.footerLinks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+}

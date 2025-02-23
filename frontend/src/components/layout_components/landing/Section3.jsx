@@ -1,6 +1,9 @@
+import Section3CSS from './Section3.module.css'
 function Section3(){
     return(
-        <h1>this is Section3</h1>
+        <section className={Section3CSS.section3}>
+
+        </section>
     )
 }
 export default Section3
