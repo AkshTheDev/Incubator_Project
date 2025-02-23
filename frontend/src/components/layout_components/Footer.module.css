@@ -2,20 +2,43 @@
     display: flex;
     justify-content: space-evenly;
     gap:20px;
-    padding-top: 3rem;
+    padding-top: 10rem;
     padding-bottom: 2rem;
 }
 .footerTop{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     gap: 1rem;
+
     
 }
 .footerLinks{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+    align-items: start;
 
+}
+.footerLinks li a{
+   
+   text-decoration: none;
+   color: black;
+   
+
+}
+.footerLinks li{
+    list-style-type: none;
+}
+.social li{
+    list-style-type: none;
+}
+
+.social li a{
+    text-decoration: none;
+    color: black;
+}
+.bottom{
+    display: flex;
+    align-items: start;
 }

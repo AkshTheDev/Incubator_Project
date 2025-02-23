@@ -6,17 +6,17 @@ function Section2() {
             <h2 className={Section2CSS.heading}>How It Works</h2>
             <div className={Section2CSS.steps}>
                 <div className={Section2CSS.step}>
-                    <h3>1. Start Writing</h3>
+                    <h3 style={{ fontFamily: "Poppins, sans-serif "}}>1. Start Writing</h3>
                     <br />
                     <p>Use our AI-powered script editor to format your screenplay instantly.</p>
                 </div>
                 <div className={Section2CSS.step}>
-                    <h3>2. AI Assistance</h3>
+                    <h3 style={{ fontFamily: "Poppins, sans-serif "}}>2. AI Assistance</h3>
                     <br />
                     <p>Get real-time feedback, dialogue suggestions, and structure analysis.</p>
                 </div>
                 <div className={Section2CSS.step}>
-                    <h3>3. Pitch & Share</h3>
+                    <h3 style={{ fontFamily: "Poppins, sans-serif "}}>3. Pitch & Share</h3>
                     <br />
                     <p>Submit your script to industry professionals or collaborate with writers.</p>
                 </div>

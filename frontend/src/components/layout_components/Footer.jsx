@@ -16,14 +16,14 @@ function Footer() {
             </ul>
         </div>
   
-        <div className="footer-social">
-            <ul>
+        <div >
+            <ul className={FooterCSS.social}>
                 <li> <a href="https://twitter.com/yourpage">Twitter</a></li>
                 <li> <a href="https://linkedin.com/company/yourpage">LinkedIn</a></li>
             </ul> 
         </div>
   
-        <div className="footer-bottom">
+        <div className={FooterCSS.bottom}>
           <p>© 2025 Scrippy. All rights reserved.</p>
         </div>
       </footer>
