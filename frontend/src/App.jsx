@@ -1,14 +1,19 @@
-import AppCss from './styles/App.module.css'
-import Home from './pages/Home'
-function App() {
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './styles/index.css'
 
-  return (
-    <div className={AppCss.page}>
-        <Home/>
-    </div>
-     
-    
-  )
+import Login from "./Login";
+import SignUp from "./SignUp";
+
+function App() {
+  return(
+    <Router>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+    </Routes>
+  </Router>
+  );
 }
 
-export default App
+export default App;
