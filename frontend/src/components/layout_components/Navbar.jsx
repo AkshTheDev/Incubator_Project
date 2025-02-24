@@ -1,11 +1,26 @@
 import NavbarCSS from "./Navbar.module.css";
 import arrow from "../../assets/images/arrow.svg";
 import logo from "../../assets/images/logo.svg";
+import { useState,useEffect } from "react";
 function Navbar() {
-  const links = ["About", "Pricing", "Support"];
-  
+  const[isSticky,SetisSticky] = useState(false);
+  useEffect(()=>{
+    const handlescroll = ()=>{
+      if(window.scrollY>50){
+        SetisSticky(true);
+      }
+      else{
+        SetisSticky(false);
+      }
+    }
+    window.addEventListener("scroll",handlescroll)
+    return ()=>{
+      window.removeEventListener("scroll",handlescroll)
+    }
+  })
+  const links = ["About", "Pricing", "Support"]; 
   return (
-    <div className={NavbarCSS.header}>
+    <div className={`${NavbarCSS.header} ${isSticky ? NavbarCSS.sticky : ""}`}>
       <div>
         <a href="./blank">
           <img src={logo} alt="logo was here" className={NavbarCSS.logo} />

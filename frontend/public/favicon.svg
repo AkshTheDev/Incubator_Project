@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <!-- Gradient background -->
+    <defs>
+      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#FF69B4"/>
+        <stop offset="100%" style="stop-color:#FF1493"/>
+      </linearGradient>
+    </defs>
+    
+    <!-- Main shape - abstract paper/script -->
+    <path d="M6 8 
+             C6 8, 16 8, 26 8
+             C26 8, 26 24, 26 24
+             C26 24, 20 20, 16 24
+             C12 28, 6 24, 6 24
+             Z" 
+          fill="url(#grad)"/>
+    
+    <!-- Script lines -->
+    <path d="M10 14 L22 14
+             M10 18 L18 18" 
+          stroke="white" 
+          stroke-width="2.5" 
+          stroke-linecap="round"/>
+    
+    <!-- Decorative corner fold -->
+    <path d="M20 8 L26 8 L20 14 Z" 
+          fill="#ffffff33"/>
+  </svg>
