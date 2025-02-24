@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: Generalsans, sans-serif;
+    font-size: large;
+    
+    
+}
+:root{
+    --akshansh: blue
+}
+body{
+    background-color: #ffffff99;
+    
+}
+

@@ -10,17 +10,21 @@
     <div class="sequence">
         <div class="name">
             <div class="diff_divss">
-                <input placeholder="First Name" type="name" id="first_name">
+                <input placeholder="First Name" type="name" id="first_name" required>
             </div>
             <div class="diff_divss">
                 <input placeholder="Last Name" type="name" id="last_name">
             </div>
         </div>
         <div class="diff_divs">
-            <input placeholder="Email" type="email" id="email">
+            <input type="text" id="username" placeholder="Enter Username" oninput="checkUsernameAvailability()" required>
+            <div id="username_status"></div>
         </div>
         <div class="diff_divs">
-            <input placeholder="Password" type="password" id="password">
+            <input placeholder="Email" type="email" id="email" required>
+        </div>
+        <div class="diff_divs">
+            <input placeholder="Password" type="password" id="password" required>
         </div>
         <button class="submit" onclick="signup()">Submit</button>
         <div>

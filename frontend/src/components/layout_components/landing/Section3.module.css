@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+.section3{
+    width: 100%;
+    height: 50rem;
+    background-image: url('A:\Incubator_Project-1\frontend\src\assets\images\background.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+   
+}
+.cardcontainer{
+    display:flex;
+    justify-content: space-between ;
+    width: 40rem;
+    background:transparent;
+    height:100%;
+   
+    
+}
+.textbox{
+    margin-top: 25rem;
+    
+}
+.text{
+    font-size: 45px;
+    font-family: 'Dancing Script', cursive;
+}
+.verticaldiv{
+    background:transparent;
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+   
+}
+.cardbox{
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    gap:1rem;
+    overflow: scroll;
+}
+.cardbox::-webkit-scrollbar{
+    display: none;
+}

@@ -1,0 +1,38 @@
+.container {
+    padding: 4rem;
+    text-align: center;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    
+}
+
+.heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: "Audrey, sans-serif";
+    padding-bottom: 3rem;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.step {
+    max-width: 300px;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.step:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #f5f2f2;
+  }
+h3 {
+    color: #333;
+    font-size: 1.5rem;
+}
