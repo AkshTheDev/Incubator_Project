@@ -25,8 +25,7 @@
     top: 10px;
     left: 10px;
     right: 10px;
-
-
+    transition: all 0.3s ease-in-out;
 }
 .listbox{
     display: flex;
@@ -95,13 +94,14 @@ li{
 .sticky {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 0!important;
+    right: 0!important;
     background: white;
     box-shadow: rgba(39, 37, 54, 0.1) 0px 4px 16px;
-    transition: all 0.3s ease-in-out;
-    width: 100%;
+    opacity: 0;
+    width: 100%!important;
     z-index: 1000;
-    border-radius: 0; /* Remove rounded edges when sticky */
+    border-radius: 0; 
     padding: 10px 20px;
+    transition: all 0.3s ease-in-out;
   }
