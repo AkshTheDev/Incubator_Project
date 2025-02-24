@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import InputField from "./components/InputField";
+import InputField from "../UI/InputField";  
+
+import './LoginLayout.css'
 
 
 export default function Login(){
