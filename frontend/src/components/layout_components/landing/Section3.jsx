@@ -1,5 +1,6 @@
 import Section3CSS from "./Section3.module.css";
-import Card from "../../layout_components/Card";
+import Card from "../../../UI/Card"; 
+
 
 function Section3() {
   const testimonials = [
