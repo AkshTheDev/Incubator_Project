@@ -92,3 +92,16 @@ li{
     align-items: center;
     
 }
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: rgba(39, 37, 54, 0.1) 0px 4px 16px;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    z-index: 1000;
+    border-radius: 0; /* Remove rounded edges when sticky */
+    padding: 10px 20px;
+  }
