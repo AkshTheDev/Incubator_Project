@@ -1,4 +1,6 @@
 import HeroSectionCSS from "./HeroSection.module.css";
+import {Link} from "react-router-dom"
+
 function HeroSection() {
   return (
     <section className={HeroSectionCSS.featurepage}>
@@ -13,11 +15,12 @@ function HeroSection() {
         Write Award-Winning Scripts
       </span>
       <div className={HeroSectionCSS.button}>
-        <a href="/blank">
+        <Link to="/login">
             Get Started
-        </a>
+        </Link>
       </div>
     </section>
+    
   );
 }
 export default HeroSection;

@@ -15,7 +15,13 @@
     font-weight: 600;
     margin: 1.87rem;
   }
-  
+  .signup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.032);
+    }
   .input-wrapper {
     margin-bottom: 1rem;
   }
