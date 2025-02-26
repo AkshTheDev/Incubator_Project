@@ -1,0 +1,70 @@
+/* Example Styling for SignUp Component */
+
+.sign-up-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-title {
+    text-align: center; 
+    font-size: 1.37rem;
+    font-weight: 600;
+    margin: 1.87rem;
+  }
+  .signup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.032);
+    }
+  .input-wrapper {
+    margin-bottom: 1rem;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border-color: #5F41E4;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #5F41E4;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #4320df;
+  }
+  
+  .login-text {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .login-text a {
+    color: #5F41E4;
+    text-decoration: none;
+  }
+  
+  .login-text a:hover {
+    text-decoration: underline;
+  }
+  
