@@ -1,7 +1,7 @@
-from flask import Flask, request, jsonify
-import mysql.connector
-from flask_cors import CORS
-import bcrypt
+from flask import Flask, request, jsonify # type: ignore
+import mysql.connector # type: ignore
+from flask_cors import CORS # type: ignore
+import bcrypt # type: ignore
 import uuid 
 
 app = Flask(__name__)
