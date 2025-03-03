@@ -8,7 +8,7 @@ function signup() {
 
     target.innerHTML = "";
 
-    if (!first_name || !last_name || !email || !password || !username) {
+    if (!first_name || !email || !password || !username) {
         target.innerHTML="<p style='color: red'>Please fill in all fields!</p>"
         return;
     }
