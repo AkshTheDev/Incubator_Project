@@ -1,6 +1,6 @@
 .featurepage {
     background-image: url("A:\Incubator_Project-1\frontend\src\assets\images\Section1.svg");
-    background-size: cover;  
+    background-size: contain;  
      background-repeat: no-repeat;
     background-position: center; 
     width: 100%;
@@ -26,4 +26,15 @@
     font-weight: 500;
     text-decoration: none;
     color:white;
+}
+.text{
+    display: flex;
+    justify-content: center;
+    width:100%;
+    background-color: transparent;
+}
+@media(max-width:1024px){
+    .text{
+        font-size: 10px;
+    }
 }

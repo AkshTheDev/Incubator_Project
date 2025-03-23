@@ -70,6 +70,7 @@ function Section3() {
                 name={testimonial.name}
                 feedback={testimonial.feedback}
                 role={testimonial.role}
+                
               />
             ))}
           </div>
