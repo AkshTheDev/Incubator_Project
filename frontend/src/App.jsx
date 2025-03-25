@@ -16,6 +16,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/Editor" element={<Editor/>}/>
+      <Route path="/Editor" element={<Editor/>}/>
     </Routes>
   </Router>
   );

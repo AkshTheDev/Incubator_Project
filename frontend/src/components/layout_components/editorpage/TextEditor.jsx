@@ -3,6 +3,7 @@ import { useCallback, useState } from 'react';
 import { Editor, Transforms, Element, createEditor } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 
+
 const initialValue = [
   {
     type: 'paragraph',
@@ -136,3 +137,4 @@ const Leaf = (props)=>{
     )
 }
 export default TextEditor;
+// check
