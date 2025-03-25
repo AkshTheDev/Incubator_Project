@@ -47,3 +47,19 @@
 .cardbox::-webkit-scrollbar{
     display: none;
 }
+/* @media(max-width:768px){
+    /* .cardbox{
+        flex-direction: column;
+    }
+    .section3{
+        flex-direction: column;
+    }
+    .textbox{
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+    .cardcontainer{
+        /* flex-direction: column; */
+    /* } */ 
+/* }  */

@@ -4,16 +4,22 @@ import {Link} from "react-router-dom"
 function HeroSection() {
   return (
     <section className={HeroSectionCSS.featurepage}>
-      <span
+      <div className={HeroSectionCSS.text} style={{marginTop: "15rem",padding: "5px"}}>
+      <p
         style={{
           fontWeight: "bolder",
           fontSize: "80px",
           fontFamily: "Audrey, sans-serif",
-          paddingTop: "15rem",
-        }}
+          
+        }
+      
+      }
+      
       >
         Write Award-Winning Scripts
-      </span>
+      </p>
+      </div>
+      
       <div className={HeroSectionCSS.button}>
         <Link to="/login">
             Get Started
