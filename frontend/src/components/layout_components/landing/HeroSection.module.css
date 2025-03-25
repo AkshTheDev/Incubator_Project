@@ -1,6 +1,6 @@
 .featurepage {
     background-image: url("A:\Incubator_Project-1\frontend\src\assets\images\Section1.svg");
-    background-size: contain;  
+    background-size: cover;  
      background-repeat: no-repeat;
     background-position: center; 
     width: 100%;
