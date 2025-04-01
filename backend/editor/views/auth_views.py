@@ -41,3 +41,8 @@ def login(request):
                 messages.error(request, "Invalid password.")
         else:
             messages.error(request, "Email does not exist.")
+
+def logout(request):
+    request.session.flush()
+    messages.success(request,"Logged out successfully.")
+    return redirect("login")
