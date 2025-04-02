@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import *;
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import check_password
 
 def signup(request):
     # context = {'signup' : Signup.objects.all()}
@@ -25,7 +26,7 @@ def signup(request):
             messages.success(request, "Account created successfully.")
             return redirect('login')    
          
-    return render(request)
+    return render(request, 'signup.html')
 
 def login(request):
     if request.method == 'POST':
@@ -41,3 +42,14 @@ def login(request):
                 messages.error(request, "Invalid password.")
         else:
             messages.error(request, "Email does not exist.")
+    return render(request, 'login.html')
+
+
+def logout(request):
+    # Logout logic here
+    auth_logout(request)
+    messages.success(request, "Logged out successfully.")
+    return redirect('login')
+
+
+
