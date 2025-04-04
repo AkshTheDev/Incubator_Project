@@ -32,3 +32,19 @@ def get_script(request):
     
     except Signup.DoesNotExist:
         return JsonResponse({"error":"User not found"},status=404)
+    
+
+@login_required
+def delete_script(request):
+    if request.method=='POST':
+        script_id=Script.POST.get("id")
+
+    try:
+        script=Script.objects.get(id=script_id)
+        script.delete()
+        return JsonResponse({"message":"Script deleted successfully"},status=success)
+    except:
+        if Script.DoesNotExist:
+            return JsonResponse({"error":"Script not found"}, status=404)
+    
+    return JsonResponse({"error":"Invalid request"}, status=400)
