@@ -70,7 +70,7 @@ function SignUp() {
         </div>
 
         {/* Username field */}
-        <div className="input-wrapper">
+        {/* <div className="input-wrapper">
           <input
             type="text"
             name="username"
@@ -80,7 +80,7 @@ function SignUp() {
             className="input-field"
             required
           />
-        </div>
+        </div> */}
         
         {/* Email field */}
         <div className="input-wrapper">

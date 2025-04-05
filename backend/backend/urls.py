@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from editor.views.auth_views import login, signup
+from django.http import JsonResponse
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', lambda request: JsonResponse({"message": "API is running"})),
+    path('login',login),
+    path('signup',signup)
 ]
