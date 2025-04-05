@@ -4,9 +4,9 @@ import DashboardSidebar from '../components/layout_components/DashboardPage/Dash
 function DashboardLayout({children}) {
   return (
     <>
-         <DashboardNavBar/>
-        <DashboardSidebar/>
-        {children}
+      <DashboardNavBar/>
+      <DashboardSidebar/>
+      {children}
     </>
    
 
