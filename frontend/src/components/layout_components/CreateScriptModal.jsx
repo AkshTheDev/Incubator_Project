@@ -34,7 +34,7 @@ export default function CreateScriptModal({onClose}) {
             type="text"
             name="title"
             value={formData.title}
-            placeholder={styles.title}
+            placeholder="Title"
             onChange={handleChange}
           />
           <div className={styles.row}>
@@ -42,14 +42,14 @@ export default function CreateScriptModal({onClose}) {
               type="text"
               name="subtitle"
               value={formData.subtitle}
-              placeholder={styles.subtitle}
+              placeholder="Subtitle"
               onChange={handleChange}
             />
             <input
               type="text"
               name="writtenBy"
               value={formData.writtenBy}
-              placeholder={styles.writtenBy}
+              placeholder="Written By"
               onChange={handleChange}
             />
           </div>
@@ -58,21 +58,21 @@ export default function CreateScriptModal({onClose}) {
               type="text"
               name="genre"
               value={formData.genre}
-              placeholder={styles.genre}
+              placeholder="Genre"
               onChange={handleChange}
             />
             <input
               type="number"
               name="pageTarget"
               value={formData.pageTarget}
-              placeholder={styles.pageTarget}
+              placeholder="page target"
               onChange={handleChange}
             />
           </div>
           <textarea
             name="logline"
             value={formData.logline}
-            placeholder={styles.logline}
+            placeholder="Logline"
             onChange={handleChange}
           />
         </div>
