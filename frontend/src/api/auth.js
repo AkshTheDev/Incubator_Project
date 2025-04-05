@@ -10,9 +10,9 @@ export const login = async (email, password) => {
   }
 };
 
-export const  signup = async (firstName, LastName, UserName, Email, Password)=>{
+export const  signup = async (firstName, LastName,  Email, Password)=>{
     try{
-        const response = await axios.post('/signup',{firstName, LastName, UserName, Email, Password})
+        const response = await axios.post('/signup',{firstName, LastName,  Email, Password})
         if(response.status = 200){
             return response.data;
         }
