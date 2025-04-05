@@ -1,28 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./TextEditorLayout.module.css";
+import styles from "./DashboardNavBar.module.css";
 import  HomeIcon from"../../../assets/images/HomeIcon.svg"
 import search from "../../../assets/images/SearchIcon.svg"
 import bell from "../../../assets/images/NotificationBell.svg"
 
-export default function TextEditorLayout() {
+export default function DashboardNavBar() {
   return (
     <div className={styles.navbar}>
       <div className={styles.navLinks}>
         <Link to="/Desktop">
-            <img className={styles.icon} src={HomeIcon} alt="home icon"></img>
+            <img className={styles.icon} src={HomeIcon} alt="home icon" ></img>
         </Link>
-        <Link to="/Search">
+        {/* <Link to="/Search"> */}
             <img className={styles.icon} src={search} alt="search icon" ></img>
-        </Link>
+        {/* </Link> */}
         
-        <Link to="/Notification">
+        {/* <Link to="/Notification"> */}
             <img className={styles.icon} src = {bell} alt="Notification icon" ></img>
-        </Link>
+        {/* </Link> */}
       </div>
-      <Link to="/CreateScript">
+      {/* <Link to="/CreateScript"> */}
         <button className={styles.navButton}>+Create</button>
-      </Link>
+      {/* </Link> */}
     </div>
   );
 }
