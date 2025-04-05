@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from ..models import Signup;
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password
+from django.http import JsonResponse
 
 def signup(request):
     if request.method == 'POST':
@@ -11,7 +12,8 @@ def signup(request):
         password = request.POST.get('password')
 
         if Signup.objects.filter(email=email).exists():
-            messages.error(request, "Email already exists.")
+            # messages.error(request, "Email already exists.")
+            return JsonResponse({"error":"Email already exists"},status=409)
         else:
             user = Signup(
                 first_name=first_name,
