@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SignUpLayout.css'
+import { signup } from '../api/auth';
 
 function SignUp() {
   // States to manage the form input
@@ -22,10 +23,17 @@ function SignUp() {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add logic to handle signup, e.g., API call or validation
-    console.log('User Signed Up:', formData);
+    try {
+      const data = await signup(formData);
+      console.log('User Signed Up',data);
+      return data;
+    } 
+    catch (error) {
+      console.error("SignUp error:", error);
+    }
+    
   };
 
   return (
