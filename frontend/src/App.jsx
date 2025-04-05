@@ -18,17 +18,17 @@ function App() {
   return(
     
     <Router>
-      <TextEditorLayout/>
+      
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/Editor" element={<Editor/>}/>
       <Route path="/sel" element={<SelectionCard/>}/>
-      <Route path="/Desktop" element={<Desktop/>}/>
+      {/* <Route path="/Desktop" element={<Desktop/>}/>
       <Route path="/Search" element={<Search/>} />
       <Route path="/Notification" element={<Notification/>}/>
-      <Route path="/CreateScript" element={<CreateScript/>} />
+      <Route path="/CreateScript" element={<CreateScript/>} /> */}
     </Routes>
   </Router>
   );
