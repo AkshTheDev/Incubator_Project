@@ -8,7 +8,6 @@ function SignUp() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    username: '',  // Added username state
     email: '',
     password: '',
   });
@@ -26,7 +25,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await signup(formData);
+      const data = await signup(formData.firstName,formData.lastName,formData.email,formData.password);
       console.log('User Signed Up',data);
       return data;
     } 
