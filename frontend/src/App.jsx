@@ -8,11 +8,12 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Editor from "./pages/Editor";
 import SelectionCard from "./components/layout_components/SelectionCard";
-import TextEditorLayout from "./components/layout_components/editorpage/TextEditorLayout";
-import Desktop from "./components/layout_components/editorpage/Desktop";
-import Notification from "./components/layout_components/editorpage/Notification";
-import Search from "./components/layout_components/editorpage/Search";
-import CreateScript from "./components/layout_components/editorpage/CreateScript";
+import TextEditorLayout from "./components/layout_components/DashboardPage/DashboardNavBar";
+import Desktop from "./components/layout_components/DashboardPage/Desktop";
+import Notification from "./components/layout_components/Notification";
+import Search from "./components/layout_components/Search";
+import CreateScript from "./components/layout_components/DashboardPage/CreateScript";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return(
@@ -25,10 +26,9 @@ function App() {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/Editor" element={<Editor/>}/>
       <Route path="/sel" element={<SelectionCard/>}/>
-      {/* <Route path="/Desktop" element={<Desktop/>}/>
-      <Route path="/Search" element={<Search/>} />
-      <Route path="/Notification" element={<Notification/>}/>
-      <Route path="/CreateScript" element={<CreateScript/>} /> */}
+      <Route path="/Desktop" element={<Desktop/>}/>
+      <Route path="/Dashboard" element={<Dashboard/>}/>
+      
     </Routes>
   </Router>
   );

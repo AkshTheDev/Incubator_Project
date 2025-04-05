@@ -1,4 +1,4 @@
-import FooterCSS from './Footer.module.css'
+  import FooterCSS from './Footer.module.css'
 function Footer() {
     return (
       <footer className={FooterCSS.MainContainer}>
