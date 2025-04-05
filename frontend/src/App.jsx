@@ -17,7 +17,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/Editor" element={<Editor/>}/>
-      <Route path="/sel" element={<SelectionCard/>}/>
+     
     </Routes>
   </Router>
   );
