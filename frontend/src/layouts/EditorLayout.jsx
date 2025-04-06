@@ -1,5 +1,5 @@
 function EditorLayout({children}){
-    {children}
+     {children}
 }
 
 export default EditorLayout

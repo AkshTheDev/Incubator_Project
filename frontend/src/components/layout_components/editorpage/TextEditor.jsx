@@ -2,6 +2,7 @@
 import { useCallback, useState } from 'react';
 import { Editor, Transforms, Element, createEditor } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
+import SelectionCard from '../SelectionCard';
 
 
 const initialValue = [
@@ -39,7 +40,7 @@ function TextEditor() {
   const renderElement = useCallback((props) => {
     switch (props.element.type) {
       case 'code':
-        return <CodeElement {...props} />;
+        return <Header {...props} />;
       default:
         return <DefaultElement {...props} />;
     }
@@ -58,6 +59,7 @@ function TextEditor() {
           renderLeaf={renderLeaf}
         //   placeholder="Type here (Ctrl + ` for code block)..."
           onKeyDown={(event) => {
+            
             if(!event.ctrlKey){
                 return
             }
@@ -97,20 +99,30 @@ function TextEditor() {
           }}
         />
       </Slate>
+      
     </div>
   );
 }
 
-const CodeElement = (props) => {
+const Header = (props) => {
+  const [text, settext]=useState("")
+  const handlekeydown = (event)=>{
+    if(event.key.length == 1){
+      settext((prev)=> prev + event.key.toUpperCase());
+      event.preventDefault();
+    }     
+    else if(event.key == "Backspace"){
+      settext((prev)=> prev.slice(0,-1))
+      event.preventDefault();
+    }
+
+  }
+  
   return (
     <pre
       {...props.attributes}
-      style={{
-        background: 'red',
-        padding: '8px',
-        borderRadius: '4px',
-        fontFamily: 'cursive',
-      }}
+      onKeyDown={handlekeydown}
+      tabIndex={0}
     >
       <code>{props.children}</code>
     </pre>
