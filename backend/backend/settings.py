@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'editor',
     'corsheaders',
+    'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +61,7 @@ ROOT_URLCONF = 'backend.urls'
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_HEADERS = [
-    'co`ntent-type',
+    'content-type',
     'authorization',
     'x-csrftoken'
 ]
@@ -140,3 +142,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+}
