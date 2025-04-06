@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SignUpLayout.css'
+import { signup } from '../api/auth';
 
 function SignUp() {
   // States to manage the form input
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    username: '',  // Added username state
     email: '',
     password: '',
   });
@@ -22,10 +22,17 @@ function SignUp() {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add logic to handle signup, e.g., API call or validation
-    console.log('User Signed Up:', formData);
+    try {
+      const data = await signup(formData.firstName,formData.lastName,formData.email,formData.password);
+      console.log('User Signed Up',data);
+      return data;
+    } 
+    catch (error) {
+      console.error("SignUp error:", error);
+    }
+    
   };
 
   return (
@@ -62,7 +69,7 @@ function SignUp() {
         </div>
 
         {/* Username field */}
-        <div className="input-wrapper">
+        {/* <div className="input-wrapper">
           <input
             type="text"
             name="username"
@@ -72,7 +79,7 @@ function SignUp() {
             className="input-field"
             required
           />
-        </div>
+        </div> */}
         
         {/* Email field */}
         <div className="input-wrapper">
