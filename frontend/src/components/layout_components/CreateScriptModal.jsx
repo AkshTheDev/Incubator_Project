@@ -65,7 +65,7 @@ export default function CreateScriptModal({onClose}) {
               type="number"
               name="pageTarget"
               value={formData.pageTarget}
-              placeholder="page target"
+              placeholder="Page Target"
               onChange={handleChange}
             />
           </div>
