@@ -51,7 +51,7 @@ function TextEditor() {
   },[])
  
   return (
-    <div style={{ padding: '20px', maxWidth: '818.72px', margin: '0 auto' }}>
+    <div style={{ padding: '20px', maxWidth: '818.72px', minWidth:'818.72px' }}>
         
       <Slate editor={editor} initialValue={initialValue}>
         <Editable
