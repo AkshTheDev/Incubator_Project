@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import pymysql
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '4789-2401-4900-65c1-61ef-ed72-c3f1-9639-3bab.ngrok-free.app'
+    '8d42-36-255-84-98.ngrok-free.app'
 ]
 
 
@@ -68,7 +69,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
-    "https://4789-2401-4900-65c1-61ef-ed72-c3f1-9639-3bab.ngrok-free.app", 
+    "https://8d42-36-255-84-98.ngrok-free.app", 
 ]
 
 CORS_ALLOW_HEADERS = [
@@ -153,3 +154,60 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+from datetime import timedelta
+from rest_framework_simplejwt.settings import api_settings
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,   
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': os.getenv("DJANGO_SECRET_KEY", "your-fallback-secret-key"),    
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    # 'loggers': {
+    #     'django': {
+    #         'handlers': ['console'],
+    #         'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+    #     },
+    # },
+    'loggers': {
+    'django': {
+        'handlers': ['console'],
+        'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+    },
+    'django.utils.autoreload': {
+        'handlers': ['console'],
+        'level': 'WARNING', 
+        'propagate': False,
+    },
+},
+}
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
+#     'django.contrib.auth.backends.AllowAllUsersModelBackend',  # Allow all users to authenticate
+ ]

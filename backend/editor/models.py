@@ -25,5 +25,5 @@ class Signup(models.Model):
     password = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'signup'
