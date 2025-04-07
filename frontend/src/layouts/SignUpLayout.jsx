@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignUpLayout.css'
 import { signup } from '../api/auth';
 
 function SignUp() {
+  const navigate = useNavigate();
   // States to manage the form input
   const [formData, setFormData] = useState({
     firstName: '',
@@ -27,7 +28,7 @@ function SignUp() {
     try {
       const data = await signup(formData.firstName,formData.lastName,formData.email,formData.password);
       console.log('User Signed Up',data);
-      return data;
+      navigate("/login")
     } 
     catch (error) {
       console.error("SignUp error:", error);

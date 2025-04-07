@@ -4,6 +4,13 @@ import instance from './axios';
 export const login = async (email, password) => {
   try {
     const response = await instance.post('/login', { "email":email,"password": password });
+    if (response.data.access && response.data.refresh) {
+      localStorage.setItem('accessToken', response.data.access);
+      localStorage.setItem('refreshToken', response.data.refresh);
+      console.log("yes stored")
+    } else {
+      console.error("Tokens not found in response");
+    }
     return response.data;
   } catch (error) {
     throw error.response?.data || 'Login failed';
