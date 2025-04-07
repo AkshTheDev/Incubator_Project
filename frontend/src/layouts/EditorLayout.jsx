@@ -6,8 +6,8 @@ function EditorLayout({children}){
      <div className={Style.div}>
           <div className={Style.sidebar}>
                <div className={Style.btnbox}>
-                    <button className={Style.btn} style={{backgroundColor: '#28a745'}}>Save</button>
-                    <button className={Style.btn} style={{backgroundColor: '#e53935'}}>Exit</button>
+                    <button className={Style.btn} >Save</button>
+                    <button className={Style.btn} >Logout</button>
                </div>
                <SelectionCard/>
           </div>
