@@ -50,18 +50,19 @@ def signup(request):
 
 def login(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+        data = json.loads(request.body)
+        email=data.get("email")
+        password=data.get("password")
 
         if Signup.objects.filter(email=email).exists():
             user = Signup.objects.get(email=email)
             if user.password == password:
                 # return JsonResponse
-                return redirect('home')
+                return JsonResponse({"message":"Account login successfully"})
             else:
-                messages.error(request, "Invalid password.")
+                return JsonResponse({"error":"Invalid password."})
         else:
-            messages.error(request, "Email does not exist.")
+            return JsonResponse({"error":"Email does not exist."})
 
 def logout(request):
     request.session.flush()
