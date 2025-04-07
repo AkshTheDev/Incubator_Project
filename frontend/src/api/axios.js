@@ -1,11 +1,26 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://4789-2401-4900-65c1-61ef-ed72-c3f1-9639-3bab.ngrok-free.app',  
+  baseURL: 'https://8d42-36-255-84-98.ngrok-free.app',  
   headers: {
     'Content-Type': 'application/json',
-  }, // only if using cookies/auth
+  },
 });
+
+instance.interceptors.request.use(
+  (config) => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+      console.log("➡️ Access token attached:", accessToken);
+    } else {
+      console.warn("❌ No access token found in localStorage");
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
 
 export default instance;
 
