@@ -1,0 +1,22 @@
+.div{
+    display:flex;
+    align-items:start;
+    justify-content: center;
+    
+}
+.btn{
+    width: 88px;
+    height: 36px;
+}
+.btnbox{
+    display: flex;
+    gap: 1rem;
+}
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+    /* border: 1px solid black; */
+    margin-top: 5rem;
+}

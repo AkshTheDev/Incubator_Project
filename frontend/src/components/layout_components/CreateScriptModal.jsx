@@ -39,7 +39,7 @@ export default function CreateScriptModal({onClose}) {
           />
           <div className={styles.row}>
             <input
-              type="text"
+              type="text" 
               name="subtitle"
               value={formData.subtitle}
               placeholder="Subtitle"

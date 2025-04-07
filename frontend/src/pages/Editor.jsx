@@ -1,8 +1,12 @@
 import TextEditor from "../components/layout_components/editorpage/TextEditor"
+import EditorLayout from "../layouts/EditorLayout"
 function Editor(){
     return(
 
-        <TextEditor/>
+        <EditorLayout>
+            <TextEditor/>
+            
+        </EditorLayout> 
     )
 }
 export default Editor
