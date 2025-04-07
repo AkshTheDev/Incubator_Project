@@ -3,7 +3,7 @@ import SelectionCardCSS from  './SelectionCardCSS.module.css'
 import { useState } from 'react';
 
 
-function SelectionCard() {
+function SelectionCard({onclick}) {
     const contents = [
         {   
             id: 1,
@@ -56,7 +56,7 @@ function SelectionCard() {
                 contents.map((editor)=>{
                     return(
                         
-                        <div className={SelectionCardCSS.cardelement} key={editor.id} >
+                        <div className={SelectionCardCSS.cardelement} key={editor.id} onClick={onclick}>
                            <i class={editor.icon} style={{color: 'white'}}></i>
                             <div style={{color: 'white'}}>{editor.name}</div>
                             <div style={{color: 'white'}}>{editor.command}</div>
