@@ -10,8 +10,13 @@ from django.db import models
 class Script(models.Model):
     user = models.ForeignKey('Signup', models.DO_NOTHING)
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(blank=True, null=True)
+    subtitle = models.CharField(max_length=255, blank=True, null=True)
+    written_by = models.CharField(max_length=255, blank=True, null=True)
+    genre = models.CharField(max_length=100, blank=True, null=True)
+    page_target = models.IntegerField(blank=True, null=True)
+    logline = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -25,5 +30,5 @@ class Signup(models.Model):
     password = models.CharField(max_length=255)
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'signup'
