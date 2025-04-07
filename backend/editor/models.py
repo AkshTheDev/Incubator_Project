@@ -19,11 +19,12 @@ class Script(models.Model):
 
 
 class Signup(models.Model):
+    id =  models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30, blank=True, null=True)
     email = models.CharField(unique=True, max_length=50)
     password = models.CharField(max_length=255)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'signup'

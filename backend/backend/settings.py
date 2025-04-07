@@ -22,12 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*lev!rbb-f)*qhxv0=x18#ygsr(9$a#pla_^1$-2pr5gu8f@!i'
+# SECRET_KEY = 'django-insecure-*lev!rbb-f)*qhxv0=x18#ygsr(9$a#pla_^1$-2pr5gu8f@!i'
+import os
+
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY','your-fallback-secret-key')
+# print("DEBUG: SECRET_KEY is set to:", os.getenv('DJANGO_SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS','localhost').split(',')
 
 
 # Application definition
@@ -39,9 +43,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'editor',
+    'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
+    'editor',
+    'rest_framework_simplejwt.token_blacklist',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,13 +66,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
+MIDDLEWARE.insert(1, 'corsheaders.middleware.CorsMiddleware')
+
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS','http://localhost:3000').split(',')
+    
 
 ROOT_URLCONF = 'backend.urls'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_HEADERS = [
-    'co`ntent-type',
+    'content-type',
     'authorization',
     'x-csrftoken'
 ]
@@ -91,10 +108,11 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'authh',
-        'USER':'root',
-        'HOST':'localhost',
-        'PASSWORD':'8002263856',
+        'NAME': os.getenv('MYSQL_DB_NAME','mysql'),
+        'USER':os.getenv('MYSQL_DB_USER','root'),
+        'HOST':os.getenv('MYSQL_DB_HOST','localhost'),
+        'PASSWORD':os.getenv('MYSQL_DB_PASSWORD'or exit('MYSQL_DB_PASSWORD not set')),
+        'PORT':os.getenv('MYSQL_DB_PORT','3306'),
     }
 }
 
@@ -135,8 +153,60 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+from datetime import timedelta
+from rest_framework_simplejwt.settings import api_settings
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,   
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': os.getenv("DJANGO_SECRET_KEY", "your-fallback-secret-key"),    
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
+#     'django.contrib.auth.backends.AllowAllUsersModelBackend',  # Allow all users to authenticate
+ ]
