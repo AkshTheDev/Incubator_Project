@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from editor.views.auth_views import login, signup
 from django.http import JsonResponse
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     path('', lambda request: JsonResponse({"message": "API is running"})),
     path('login',login),
-    path('signup',signup)
+    path('signup',signup),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
+
