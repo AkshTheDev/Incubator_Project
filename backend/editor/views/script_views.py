@@ -6,9 +6,9 @@ import json
 from rest_framework_simplejwt.tokens import AccessToken
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.authentication import JWTAuthentication
+# from rest_framework.decorators import api_view, permission_classes
+# from rest_framework.permissions import IsAuthenticated
+# from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # @login_required
 # def save_script(request):
@@ -28,32 +28,31 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 # @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 def get_script(request):
-    print("GET_SCRIPT CALLED")
-    print("GET SCRIPT HEADERS:", request.headers)
-    print("GET SCRIPT METHOD:", request.method)
+    if request.method == 'GET':
+        auth_header = request.headers.get('Authorization')
+        if not auth_header or not auth_header.startswith('Bearer '):
+            return JsonResponse({'error': 'Authorization token missing'}, status=401)
 
-    auth_header = request.headers.get('Authorization')
-    if not auth_header or not auth_header.startswith('Bearer '):
-        return JsonResponse({'error': 'Authorization token missing'}, status=401)
+        token_str = auth_header.split(' ')[1]
 
-    token_str = auth_header.split(' ')[1]
+        try:
+            access_token = AccessToken(token_str)
+            user_id = access_token['user_id']
+        except Exception as e:
+            return JsonResponse({'error': 'Invalid token'}, status=401)
 
-    try:
-        access_token = AccessToken(token_str)
-        user_id = access_token['user_id']
-    except Exception as e:
-        return JsonResponse({'error': 'Invalid token'}, status=401)
-
-    if not user_id:
-        return JsonResponse({'error': 'Unauthorized'}, status=401)
+        if not user_id:
+            return JsonResponse({'error': 'Unauthorized'}, status=401)
+        
+        try:
+            user=Signup.objects.get(id=user_id)
+            user_script=Script.objects.filter(user=user).values("title","id","created_at")
+            return JsonResponse(list(user_script), safe=False)
+        
+        except Signup.DoesNotExist:
+            return JsonResponse({"error":"User not found"},status=404)
     
-    try:
-        user=Signup.objects.get(id=user_id)
-        user_script=Script.objects.filter(user=user).values("title","id","created_at")
-        return JsonResponse(list(user_script), safe=False)
-    
-    except Signup.DoesNotExist:
-        return JsonResponse({"error":"User not found"},status=404)
+    return JsonResponse({"error":"Invalid request"}, status=400)
     
 
 

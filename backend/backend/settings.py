@@ -159,12 +159,12 @@ from datetime import timedelta
 from rest_framework_simplejwt.settings import api_settings
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=2),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,   
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': os.getenv("DJANGO_SECRET_KEY", "your-fallback-secret-key"),    
+    'SIGNING_KEY': SECRET_KEY, 
     'VERIFYING_KEY': None,
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
@@ -193,18 +193,23 @@ LOGGING = {
     #         'handlers': ['console'],
     #         'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
     #     },
+    #     'django.utils.autoreload': {
+    #         'handlers': ['console'],
+    #         'level': 'WARNING', 
+    #         'propagate': False,
+    #     },
     # },
     'loggers': {
-    'django': {
-        'handlers': ['console'],
-        'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        'django': {
+            'handlers': ['console'],
+            'level': 'WARNING',  # Only show WARNING and above (ERROR, CRITICAL)
+        },
+        'django.server': {
+            'handlers': ['console'],
+            'level': 'ERROR',  # Show fewer server logs
+            'propagate': False,
+        },
     },
-    'django.utils.autoreload': {
-        'handlers': ['console'],
-        'level': 'WARNING', 
-        'propagate': False,
-    },
-},
 }
 
 AUTHENTICATION_BACKENDS = [
@@ -215,5 +220,6 @@ AUTHENTICATION_BACKENDS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
 }

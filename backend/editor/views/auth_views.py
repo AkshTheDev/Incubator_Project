@@ -5,7 +5,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import RefreshToken,AccessToken, TokenError
 
 
 @csrf_exempt
@@ -78,4 +78,36 @@ def logout(request):
             return JsonResponse({"message": "Logged out successfully."}, status=200)
         except Exception as e:
             return JsonResponse({"error": "Invalid token."}, status=400)
+        
+    return JsonResponse({'error': 'Invalid method'}, status=405)
+
+
+def token_refresh(request):
+    if request.method == 'GET':
+        refresh_token = request.data.get("refresh")
+
+        if not refresh_token:
+            return JsonResponse({"error": "Refresh token required"}, status=400)
+
+        try:
+            token = RefreshToken(refresh_token)
+            user_id = token.payload.get("user_id")
+
+            if not user_id:
+                return JsonResponse({"error": "Invalid token payload"}, status=400)
+
+            try:
+                user = Signup.objects.get(id=user_id)
+            except Signup.DoesNotExist:
+                return JsonResponse({"error": "User does not exist"}, status=400)
+
+            new_access_token = str(AccessToken.for_user(user))
+
+            return JsonResponse({
+                "access": new_access_token
+            }, status=200)
+
+        except TokenError as e:
+            return JsonResponse({"error": str(e)}, status=401)
+    
     return JsonResponse({'error': 'Invalid method'}, status=405)

@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from editor.views.auth_views import login, signup
+from editor.views.auth_views import login, signup, token_refresh
 from editor.views.script_views import update_script_save_script,get_script,get_script_by_id
 from django.http import JsonResponse
 from rest_framework_simplejwt.views import TokenRefreshView
@@ -28,6 +28,6 @@ urlpatterns = [
     path('sup',update_script_save_script),
     path('scriptbyid',get_script_by_id),
     path('getScript',get_script),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('token/refresh/', token_refresh),
 ]
 
