@@ -22,7 +22,7 @@ export default function DashboardNavBar() {
   return (
     <div className={styles.navbar}>
       <div className={styles.navLinks}>
-        <Link to="/Desktop">
+        <Link to="/Dashboard" className={styles.navLink}>
             <img className={styles.icon} src={HomeIcon} alt="home icon" ></img>
         </Link>
             <img className={styles.icon} src={search} alt="search icon" ></img>
