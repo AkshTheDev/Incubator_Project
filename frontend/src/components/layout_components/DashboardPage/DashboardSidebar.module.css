@@ -1,0 +1,33 @@
+.dashboardSidebar {
+  background-color: #f5f5f5;
+  width: 240px;              
+  height: 100vh;            
+  flex-direction: column;
+  justify-content: flex-start;
+  position: fixed;
+}           
+.navLink {
+    color: rgb(89, 66, 195);
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.6rem 0;
+    padding-left: 1rem;
+    
+    font-size: 0.95rem;
+    width: 200px;
+    height: 8 rem;
+    align-items: center;
+    gap: 0.6rem; 
+    transition: background-color 0.2s;
+  }
+  
+  .navLink:hover {
+    background-color: #cfcfd8;
+    border-radius: 6px;
+  }
+  
+  .icon {
+    color: #505052;
+  }
+  

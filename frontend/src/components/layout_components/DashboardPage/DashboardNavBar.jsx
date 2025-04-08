@@ -5,6 +5,7 @@ import  HomeIcon from"../../../assets/images/HomeIcon.svg"
 import search from "../../../assets/images/SearchIcon.svg"
 import bell from "../../../assets/images/NotificationBell.svg"
 import CreateScriptModal from "../CreateScriptModal";
+import DashboardSidebar from "./DashboardSidebar";
 
 export default function DashboardNavBar() {
     const [isOpen, setIsOpen] = useState(false);

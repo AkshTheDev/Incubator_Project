@@ -14,6 +14,7 @@ import Notification from "./components/layout_components/Notification";
 import Search from "./components/layout_components/Search";
 import CreateScript from "./components/layout_components/DashboardPage/CreateScript";
 import Dashboard from "./pages/Dashboard";
+import DashboardSidebar from "./components/layout_components/DashboardPage/DashboardSidebar";
 
 function App() {
   return(
@@ -28,7 +29,7 @@ function App() {
       <Route path="/sel" element={<SelectionCard/>}/>
       <Route path="/Desktop" element={<Desktop/>}/>
       <Route path="/Dashboard" element={<Dashboard/>}/>
-      
+      <Route path="/DashboardSidebar" element={<DashboardSidebar/>}/>
     </Routes>
   </Router>
   );
