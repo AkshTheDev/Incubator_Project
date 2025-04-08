@@ -82,6 +82,7 @@ def logout(request):
     return JsonResponse({'error': 'Invalid method'}, status=405)
 
 
+@csrf_exempt
 def token_refresh(request):
     if request.method == 'GET':
         refresh_token = request.data.get("refresh")

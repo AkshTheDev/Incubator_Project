@@ -26,7 +26,7 @@ urlpatterns = [
     path('login',login),
     path('signup',signup),
     path('sup',update_script_save_script),
-    path('scriptbyid',get_script_by_id),
+    path('scriptbyid/<int:script_id>',get_script_by_id),
     path('getScript',get_script),
     path('token/refresh/', token_refresh),
 ]

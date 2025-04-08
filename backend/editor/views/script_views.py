@@ -57,7 +57,7 @@ def get_script(request):
 
 
 def get_script_by_id(request, script_id):
-    if request.methos=='GET':
+    if request.method=='GET':
         try:
             auth_header = request.headers.get('Authorization')
             if not auth_header or not auth_header.startswith('Bearer '):
@@ -75,7 +75,7 @@ def get_script_by_id(request, script_id):
                 return JsonResponse({'error': 'Unauthorized'}, status=401)
             
 
-            script = Script.objects.get(id=script_id, user=user)
+            script = Script.objects.get(id=script_id, user=user_id)
             return JsonResponse({
                 'id': script.id,
                 'title': script.title,
