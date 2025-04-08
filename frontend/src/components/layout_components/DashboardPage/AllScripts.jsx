@@ -2,22 +2,8 @@ import React from "react"
 import Styles from './AllScripts.module.css'
 import instance from "../../../api/axios"
 import {useState, useEffect} from 'react'
-export default function AllScripts(){
-    const [script, setScripts] = useState([])
-    useEffect(()=>{
-        const fetchScripts = async () => {
-            // const url = '/getscript';
-            // console.log("📡 Hitting endpoint:", instance.defaults.baseURL + url);
-            try {
-              const response = await instance.get('/getScript'); // adjust the endpoint
-              setScripts(response.data); // assuming response.data is an array
-              console.log("📄 All scripts:", response);
-            } catch (error) {
-              console.error("❌ Failed to fetch scripts:", error);
-            }
-          };
-          fetchScripts();
-        },[]);
+export default function AllScripts({script}){
+    
     
     return (
         <>
