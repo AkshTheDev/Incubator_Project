@@ -5,6 +5,7 @@ import  HomeIcon from"../../../assets/images/HomeIcon.svg"
 import search from "../../../assets/images/SearchIcon.svg"
 import bell from "../../../assets/images/NotificationBell.svg"
 import CreateScriptModal from "../CreateScriptModal";
+import { logout } from "../../../api/logout";
 
 export default function DashboardNavBar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,8 @@ export default function DashboardNavBar() {
     const handlelogout = async()=>{
       try{
         const response = await logout()
-        navigate("/login")
+        console.log(response)
+        
       }
       catch(error){
         console.log(error)
