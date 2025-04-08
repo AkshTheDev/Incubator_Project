@@ -1,0 +1,42 @@
+
+.dashboardContainer {
+    background-color: #dbd9da;
+    height: calc(100vh - 53.9px);
+    width: 100%;
+    overflow: hidden;
+    /* margin-left: 270px; */
+}
+
+.title{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.4rem; 
+    padding: 0.5rem;
+    margin-left: 270px;
+    margin-bottom: 0.5rem;
+}
+.searchBar {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin-left: 270px;
+    /* padding: 0.5rem; */
+    padding-left: 35px;
+    margin-bottom: 0.5rem;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    width: 80%;
+    color: black;
+}
+.searchWrapper {
+    position: relative;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 45%;
+    left: 280px;
+    transform: translateY(-50%);
+    color: #aaa
+}
