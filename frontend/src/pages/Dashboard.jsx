@@ -6,6 +6,7 @@ import instance from '../api/axios'
 
 function Dashboard() {
   const [script, setScripts] = useState([])
+  
       useEffect(()=>{
           const fetchScripts = async () => {
               // const url = '/getscript';
@@ -13,6 +14,7 @@ function Dashboard() {
               try {
                 const response = await instance.get('/getScript'); // adjust the endpoint
                 setScripts(response.data); // assuming response.data is an array
+                
                 console.log("📄 All scripts:", response);
               } catch (error) {
                 console.error("❌ Failed to fetch scripts:", error);
