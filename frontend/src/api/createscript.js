@@ -1,5 +1,5 @@
 import instance from "./axios";
-export const save = async (scriptData) => {
+export const createscript = async (scriptData) => {
   try {
     const response = await instance.post("/sup", {
       "title": scriptData.title,
@@ -13,9 +13,4 @@ export const save = async (scriptData) => {
   } catch (error) {
     console.log("Unable to save: ", error);
   }
-};
-export const logout = async () => {
-  try {
-    const response = instance.post("/Editor", {});
-  } catch {}
 };

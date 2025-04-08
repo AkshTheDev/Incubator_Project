@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://e362-36-255-84-98.ngrok-free.app',  
+  baseURL: 'http://10.51.14.238:8000',  
   headers: {
     'Content-Type': 'application/json',
   },
@@ -14,7 +14,7 @@ instance.interceptors.request.use(
       config.headers.Authorization = `Bearer ${accessToken}`;
       console.log("➡️ Access token attached:", accessToken);
     } else {
-      console.warn("❌ No access token found in localStorage");
+      console.warn(" No access token found in localStorage");
     }
     return config;
   },
@@ -39,7 +39,7 @@ instance.interceptors.response.use(
 
         // Request new access token
         const res = await axios.post(
-          'https://8d42-36-255-84-98.ngrok-free.app/api/token/refresh/',
+          'http://10.51.14.238:8000/token/refresh/',
           { refresh: refreshToken },
           { headers: { 'Content-Type': 'application/json' } }
         );

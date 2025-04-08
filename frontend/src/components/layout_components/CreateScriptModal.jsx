@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CreateScriptModal.module.css";
-import {save} from "../../api/Save_Logout";
+import {createscript} from "../../api/createscript";
 
 export default function CreateScriptModal({onClose}) {
   const handlesavedata = async()=>{
     try{
-      // const dataToSend = {
-      //   ...formData,
-      //   pageTarget: parseInt(formData.pageTarget),
-      // };
-      const response = await save(formData)
+      
+      const response = await createscript(formData)
       console.log("script:",response)
       onClose()
     }

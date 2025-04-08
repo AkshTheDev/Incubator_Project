@@ -1,5 +1,5 @@
 import React, { useState }from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./DashboardNavBar.module.css";
 import  HomeIcon from"../../../assets/images/HomeIcon.svg"
 import search from "../../../assets/images/SearchIcon.svg"
@@ -8,7 +8,16 @@ import CreateScriptModal from "../CreateScriptModal";
 
 export default function DashboardNavBar() {
     const [isOpen, setIsOpen] = useState(false);
-
+    const navigate = useNavigate();
+    const handlelogout = async()=>{
+      try{
+        const response = await logout()
+        navigate("/login")
+      }
+      catch(error){
+        console.log(error)
+      }
+    }
     const handleCreateScript = () => {
       console.log("Create script button clicked");
       setIsOpen(true);
@@ -28,7 +37,11 @@ export default function DashboardNavBar() {
         
             <img className={styles.icon} src = {bell} alt="Notification icon" ></img>
       </div>
+      <div className={styles.btns}>
+
+        <button className={styles.navButton} onClick={handlelogout}>Logout</button>
         <button className={styles.navButton} onClick={handleCreateScript}>+ Create</button>
+      </div>
 
       {isOpen && (
         

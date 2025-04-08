@@ -8,6 +8,7 @@ function EditorLayout({children}){
                <div className={Style.btnbox}>
                     <button className={Style.btn} >Save</button>
                     <button className={Style.btn} >Logout</button>
+                    
                </div>
                <SelectionCard/>
           </div>
