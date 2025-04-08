@@ -84,8 +84,10 @@ def logout(request):
 
 @csrf_exempt
 def token_refresh(request):
-    if request.method == 'GET':
-        refresh_token = request.data.get("refresh")
+    if request.method == 'POST':
+        print('access the function')
+        data = json.loads(request.body)
+        refresh_token = data.get('refresh')
 
         if not refresh_token:
             return JsonResponse({"error": "Refresh token required"}, status=400)
