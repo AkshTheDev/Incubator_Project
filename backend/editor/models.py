@@ -11,7 +11,7 @@ class Script(models.Model):
     user = models.ForeignKey('Signup', models.DO_NOTHING)
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     subtitle = models.CharField(max_length=255, blank=True, null=True)
     written_by = models.CharField(max_length=255, blank=True, null=True)
     genre = models.CharField(max_length=100, blank=True, null=True)

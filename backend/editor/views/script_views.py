@@ -6,6 +6,9 @@ import json
 from rest_framework_simplejwt.tokens import AccessToken
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # @login_required
 # def save_script(request):
@@ -22,20 +25,68 @@ from django.views.decorators.csrf import csrf_exempt
     
 #     return JsonResponse({"message":"Invalid request"}, status=400)
 
-
-@login_required
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
 def get_script(request):
-    user_id = request.session.get('user_id')
+    print("GET_SCRIPT CALLED")
+    print("GET SCRIPT HEADERS:", request.headers)
+    print("GET SCRIPT METHOD:", request.method)
+
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return JsonResponse({'error': 'Authorization token missing'}, status=401)
+
+    token_str = auth_header.split(' ')[1]
+
+    try:
+        access_token = AccessToken(token_str)
+        user_id = access_token['user_id']
+    except Exception as e:
+        return JsonResponse({'error': 'Invalid token'}, status=401)
+
     if not user_id:
-        return JsonResponse({'error':'Unauthorized'}, status=401)
+        return JsonResponse({'error': 'Unauthorized'}, status=401)
     
     try:
         user=Signup.objects.get(id=user_id)
-        user_script=Script.objects.filter(user=user).values("title","content","craeted_at")
-        return JsonResponse({"Script":user_script})
+        user_script=Script.objects.filter(user=user).values("title","id","created_at")
+        return JsonResponse(list(user_script), safe=False)
     
     except Signup.DoesNotExist:
         return JsonResponse({"error":"User not found"},status=404)
+    
+
+
+def get_script_by_id(request, script_id):
+    if request.methos=='GET':
+        try:
+            auth_header = request.headers.get('Authorization')
+            if not auth_header or not auth_header.startswith('Bearer '):
+                return JsonResponse({'error': 'Authorization token missing'}, status=401)
+
+            token_str = auth_header.split(' ')[1]
+
+            try:
+                access_token = AccessToken(token_str)
+                user_id = access_token['user_id']
+            except Exception as e:
+                return JsonResponse({'error': 'Invalid token'}, status=401)
+
+            if not user_id:
+                return JsonResponse({'error': 'Unauthorized'}, status=401)
+            
+
+            script = Script.objects.get(id=script_id, user=user)
+            return JsonResponse({
+                'id': script.id,
+                'title': script.title,
+                'content': script.content
+            }, status=200)
+        except Script.DoesNotExist:
+            return JsonResponse({'error': 'Script not found or access denied'}, status=404)
+        
+    return JsonResponse({"error":"Invalid request"}, status=400)
+
     
 
 @login_required
@@ -74,7 +125,6 @@ def update_script_save_script(request):
     if request.method=="POST":
         try:
             data = json.loads(request.body)
-            print("DATA RECEIVED:", data)
             script_id = data.get("id")
             script_title = data.get("title")
             script_content = data.get("content")

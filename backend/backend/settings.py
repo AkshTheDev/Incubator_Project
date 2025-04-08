@@ -31,7 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '8d42-36-255-84-98.ngrok-free.app'
+    'e362-36-255-84-98.ngrok-free.app'
 ]
 
 
@@ -69,7 +69,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
-    "https://8d42-36-255-84-98.ngrok-free.app", 
+    "https://e362-36-255-84-98.ngrok-free.app", 
 ]
 
 CORS_ALLOW_HEADERS = [
@@ -211,3 +211,9 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
 #     'django.contrib.auth.backends.AllowAllUsersModelBackend',  # Allow all users to authenticate
  ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
