@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputField from "../UI/InputField";
 import { login } from "../api/auth";
 import "./LoginLayout.css";
@@ -8,15 +8,19 @@ import "./LoginLayout.css";
 export default function Login() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-
+  const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log("Email:",email)
+    console.log("Password:",password)
     try {
       const data = await login(email, password);
-      console.log("Logged in:", data);
+      console.log("Logged in:", data.access,data.refresh);
+     
+     navigate("/Dashboard");
     } catch (err) {
       console.error("Login error:", err);
-    }
+    } 
   };
 
   return (
@@ -49,6 +53,7 @@ export default function Login() {
           <Link to="/signUp">Sign up</Link>
         </p>
       </div>
+       
     </div>
   );
 }

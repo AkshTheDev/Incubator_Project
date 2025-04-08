@@ -4,8 +4,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #f5f5f5;
+    background-color:#F9FAFB;
     border-bottom: 1px solid #ccc;
+    border-radius: 10px;
+    border:1px solid black;
   }
   
   .navLinks {

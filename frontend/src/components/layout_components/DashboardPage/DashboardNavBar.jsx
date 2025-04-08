@@ -35,6 +35,7 @@ export default function DashboardNavBar() {
         <CreateScriptModal onClose={handleCloseModal}/>
       
       )}
+      
     </div>
   );
 }

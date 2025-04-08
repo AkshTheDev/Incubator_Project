@@ -1,0 +1,17 @@
+.container{
+    background-color:#F9FAFB;
+    width: 80vw;
+    height: 100vh;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding-top: 1rem;
+}
+.box{
+    display: flex;
+    background-color:azure;
+    border: 1px solid black;
+    gap:2rem;
+    padding-left: 1rem;
+    align-items: center;
+    color:#111827;
+}

@@ -1,8 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CreateScriptModal.module.css";
+import {save} from "../../api/Save_Logout";
 
 export default function CreateScriptModal({onClose}) {
+  const handlesavedata = async()=>{
+    try{
+      // const dataToSend = {
+      //   ...formData,
+      //   pageTarget: parseInt(formData.pageTarget),
+      // };
+      const response = await save(formData)
+      console.log("script:",response)
+      onClose()
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
   const [formData, setFormData] = useState({
     title: "",
     subtitle: "",
@@ -81,7 +96,7 @@ export default function CreateScriptModal({onClose}) {
           <button className={styles.cancel} onClick={onClose}>
             Cancel
           </button>
-          <button className={styles.createScript}>
+          <button className={styles.createScript} onClick={handlesavedata}>
             Create Script
           </button>
         </div>

@@ -1,0 +1,21 @@
+.container{
+    height: 100vh;
+    width: 20vw;
+    background-color: #F9FAFB;
+    border-radius: 10px;
+    border: 1px solid black;
+    gap: 1rem;
+    padding-top: 1rem;
+    
+}
+.box{
+    display: flex;
+    justify-content: start;
+    gap:1rem;
+    padding-left: 1rem;
+    align-items: center;
+    /* border: 1px solid black;
+    background-color: azure; */
+    color:#111827;
+    height: 2rem;
+}
