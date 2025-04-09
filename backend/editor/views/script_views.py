@@ -105,7 +105,7 @@ def delete_script(request):
 
 
 @csrf_exempt
-def update_script_save_script(request):
+def save_script(request):
     auth_header = request.headers.get('Authorization')
     if not auth_header or not auth_header.startswith('Bearer '):
         return JsonResponse({'error': 'Authorization token missing'}, status=401)
@@ -132,31 +132,62 @@ def update_script_save_script(request):
             genre = data.get("genre")
             page_target = data.get("page_target")
             logline = data.get("logline")
-
-            if script_id:
-                script=Script.objects.get(id=script_id, user_id=user_id)
-                script.title=script_title
-                script.content=script_content
-                script.save()
-                return JsonResponse({"message":"Script updated successfully"})
             
-            else:
-                user = Signup.objects.get(id=user_id)
-                script = Script.objects.create(
-                    user=user,
-                    title=script_title,
-                    content=script_content or "",
-                    subtitle=subtitle,
-                    written_by=written_by,
-                    genre=genre,
-                    page_target=page_target,
-                    logline=logline
-                )
-                return JsonResponse({"message":"Script saved successfully"},status=200)
+            user = Signup.objects.get(id=user_id)
+            script = Script.objects.create(
+                user=user,
+                title=script_title,
+                content=script_content or "",
+                subtitle=subtitle,
+                written_by=written_by,
+                genre=genre,
+                page_target=page_target,
+                logline=logline
+            )
+            return JsonResponse({"message":"Script saved successfully"},status=200)
         
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=400)
         
     return JsonResponse({'error': 'Invalid request method'}, status=405)
 
+
+@csrf_exempt
+def update_script(request):
+    auth_header = request.headers.get('Authorization')
+    print("Auth Header:", auth_header)
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return JsonResponse({'error': 'Authorization token missing'}, status=401)
+
+    token_str = auth_header.split(' ')[1]
+
+    try:
+        access_token = AccessToken(token_str)
+        user_id = access_token['user_id']
+        print("User ID from token:", user_id)
+    except Exception as e:
+        return JsonResponse({'error': 'Invalid token'}, status=401)
+
+    if not user_id:
+        return JsonResponse({'error': 'Unauthorized'}, status=401)
+    
+    if request.method=="POST":
+        try:
+            data = json.loads(request.body)
+            print("data",data)
+            script_id = data.get("id")
+            script_content = data.get("content")
+
+            script=Script.objects.get(id=script_id, user_id=user_id)
+            # script.title=script_title
+            script.content=script_content
+            script.save()
+            return JsonResponse({"message":"Script updated successfully"})
+        
+        
+        except Exception as e:
+            print("Exception:", str(e))
+            return JsonResponse({'error': str(e)}, status=400)
+        
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
 

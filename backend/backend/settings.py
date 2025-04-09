@@ -31,7 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '10.51.14.238'
+    '192.168.8.152'
 ]
 
 
@@ -159,7 +159,7 @@ from datetime import timedelta
 from rest_framework_simplejwt.settings import api_settings
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=2),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,   
@@ -202,19 +202,19 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console'],
-            'level': 'WARNING',  # Only show WARNING and above (ERROR, CRITICAL)
+            'level': 'WARNING', 
         },
         'django.server': {
             'handlers': ['console'],
-            'level': 'ERROR',  # Show fewer server logs
+            'level': 'ERROR',  
             'propagate': False,
         },
     },
 }
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
-#     'django.contrib.auth.backends.AllowAllUsersModelBackend',  # Allow all users to authenticate
+    'django.contrib.auth.backends.ModelBackend', 
+#     'django.contrib.auth.backends.AllowAllUsersModelBackend',  
  ]
 
 REST_FRAMEWORK = {

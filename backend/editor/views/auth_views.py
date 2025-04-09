@@ -46,6 +46,7 @@ def login(request):
 
             if check_password(password, user.password):  
                 refresh = RefreshToken.for_user(user)
+                print("logged in")
                 return JsonResponse({
                     "message": "Login successful.",
                     "access": str(refresh.access_token),
@@ -68,19 +69,38 @@ def login(request):
 #         'access': str(refresh.access_token),
 #     }
 
-@csrf_exempt
-def logout(request):
-    if request.method == 'POST':
-        try:
-            refresh_token = request.data.get("refresh")  
-            token = RefreshToken(refresh_token)
-            token.blacklist()
-            return JsonResponse({"message": "Logged out successfully."}, status=200)
-        except Exception as e:
-            return JsonResponse({"error": "Invalid token."}, status=400)
+# @csrf_exempt
+# def logout(request):
+#     if request.method == 'POST':
+#         try:
+#             data = json.loads(request.body)
+#             refresh_token = data.get("refresh")  
+#             token = RefreshToken(refresh_token)
+#             token.blacklist()
+#             return JsonResponse({"message": "Logged out successfully."}, status=200)
+#         except Exception as e:
+#             return JsonResponse({"error": "Invalid token."}, status=400)
         
-    return JsonResponse({'error': 'Invalid method'}, status=405)
+#     return JsonResponse({'error': 'Invalid method'}, status=405)
 
+# @csrf_exempt
+# def logout(request):
+#     if request.method == 'POST':
+#         try:
+#             print("Request Body Raw:", request.body) 
+#             data = json.loads(request.body)
+#             refresh_token = data.get("refresh")
+#             if not refresh_token:
+#                 return JsonResponse({"error": "Refresh token missing."}, status=400)
+            
+#             token = RefreshToken(refresh_token)
+#             token.blacklist()
+#             return JsonResponse({"message": "Logged out successfully."}, status=200)
+#         except Exception as e:
+#             print("Error:", str(e))  
+#             return JsonResponse({"error": "Invalid token."}, status=400)
+        
+#     return JsonResponse({'error': 'Invalid method'}, status=405)
 
 @csrf_exempt
 def token_refresh(request):

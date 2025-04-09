@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from editor.views.auth_views import login, signup, token_refresh
-from editor.views.script_views import update_script_save_script,get_script,get_script_by_id
+from editor.views.auth_views import *
+from editor.views.script_views import update_script, save_script,get_script,get_script_by_id
 from django.http import JsonResponse
 from rest_framework_simplejwt.views import TokenRefreshView
 
@@ -25,7 +25,9 @@ urlpatterns = [
     path('', lambda request: JsonResponse({"message": "API is running"})),
     path('login',login),
     path('signup',signup),
-    path('sup',update_script_save_script),
+    # path('logout', logout),
+    path('sup', save_script),
+    path('sub',update_script),
     path('scriptbyid/<int:script_id>',get_script_by_id),
     path('getScript',get_script),
     path('token/refresh/', token_refresh),
