@@ -131,12 +131,12 @@ python manage.py migrate
 python manage.py runserver
 ```
 ### Enviornment Variables
-- Create a > .env file in both frontend and backend
+- Create a `.env` file in both frontend and backend
 - Add API keys for OpenAI, Whisper, Firebase, etc.
 
 ## Commit Message Guidelines
 - Use present tense and be specific.
 - Examples:
-  > Add Django models for scene and dialogue entities
-  > Integrate voice-to-text feature using Whisper
-  > Fix React UI bug in character creation modal
+    `Add Django models for scene and dialogue entities`
+    `Integrate voice-to-text feature using Whisper`
+    `Fix React UI bug in character creation modal`
