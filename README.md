@@ -108,33 +108,33 @@ Scrippy is designed to revolutionize scriptwriting with powerful AI features tai
 git clone https://github.com/yourusername/scrippy.git
 cd scrippy
 ```
-###Frontend Setup (React)
+### Frontend Setup (React)
 ```bash
 cd frontend
 npm install
 npm run start
 ```
-###Backend Setup (Django)
+### Backend Setup (Django)
 ```bash
 cd backend
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
-###Configure MySQL Database
+### Configure MySQL Database
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
-###Run the Django Server
+### Run the Django Server
 ```bash
 python manage.py runserver
 ```
-###Enviornment Variables
-- Create a >.env file in both frontend and backend
+### Enviornment Variables
+- Create a > .env file in both frontend and backend
 - Add API keys for OpenAI, Whisper, Firebase, etc.
 
-##Commit Message Guidelines
+## Commit Message Guidelines
 - Use present tense and be specific.
 - Examples:
   > Add Django models for scene and dialogue entities
