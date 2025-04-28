@@ -5,7 +5,17 @@ import RenameForm from './RenameForm';
 
 function DashboardFiles({ files, viewMode, onRename, onDelete }) {
   const [editingFile, setEditingFile] = useState(null);
-
+   const handleclick = async(id)=>{
+          try{
+  
+              const response = await openScript(id)
+              console.log("box clicked: ",response)
+              navigate("/Editor")
+          }
+          catch(error){
+              console.log(error)
+          }
+      }
   return (
     <div className={viewMode === 'grid' ? styles.filesGrid : styles.filesList}>
       {files.length > 0 ? (
@@ -25,6 +35,7 @@ function DashboardFiles({ files, viewMode, onRename, onDelete }) {
               onRename={onRename}
               onDelete={onDelete}
               onEdit={() => setEditingFile(file)}
+              onClick={handleclick(file.id)}
             />
           )
         ))
