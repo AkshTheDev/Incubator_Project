@@ -14,7 +14,7 @@ export default function DashboardNavBar() {
       try{
         const response = await logout()
         console.log(response)
-        
+        navigate("/login")
       }
       catch(error){
         console.log(error)
