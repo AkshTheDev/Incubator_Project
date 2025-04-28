@@ -1,0 +1,25 @@
+.searchWrapper {
+    position: relative;
+    margin-bottom: 24px;
+    width: 100%;
+}
+.searchIcon {
+    position: absolute;
+    top: 45%;
+    left: 280px;
+    transform: translateY(-50%);
+    color: #aaa
+}
+.searchBar {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin-left: 270px;
+    /* padding: 0.5rem; */
+    padding-left: 35px;
+    margin-bottom: 0.5rem;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    width: 80%;
+    color: black;
+}

@@ -4,7 +4,7 @@
   height: 100vh;            
   flex-direction: column;
   justify-content: flex-start;
-  position: relative;
+  position: fixed;
 }           
 .navLink {
     color: rgb(89, 66, 195);

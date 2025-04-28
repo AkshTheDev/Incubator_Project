@@ -1,0 +1,90 @@
+.dashboardContainer {
+    background-color: #dbd9da;
+    height: calc(100vh - 53.9px);
+    width: 100%;
+    overflow: hidden;
+    /* margin-left: 270px; */
+}
+.title{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.4rem; 
+    padding: 0.5rem;
+    margin-left: 270px;
+    margin-bottom: 0.5rem;
+}
+.searchWrapper {
+    position: relative;
+    margin-bottom: 24px;
+    width: 100%;
+}
+.searchIcon {
+    position: absolute;
+    top: 45%;
+    left: 280px;
+    transform: translateY(-50%);
+    color: #aaa
+}
+.searchBar {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin-left: 270px;
+    /* padding: 0.5rem; */
+    padding-left: 35px;
+    margin-bottom: 0.5rem;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    width: 80%;
+    color: black;
+}
+.sectionHeader {
+    margin-left: 270px;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.myFilesLabel {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+.controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.filterSelect {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-size: 0.9rem;
+}
+.viewControls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.viewButton {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #666;
+    border-radius: 4px;
+}
+
+.viewButton:hover {
+    background-color: #f0f0f0;
+}
+
+.viewButton.active {
+    background-color: #e0e0e0;
+    color: #333;
+}
+.filesContainer {
+    margin-left: 270px;
+    padding: 0 1rem;
+}

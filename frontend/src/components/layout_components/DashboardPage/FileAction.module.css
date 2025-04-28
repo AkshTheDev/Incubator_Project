@@ -1,0 +1,50 @@
+.fileRow .fileActions {
+    position: static;  /* Override absolute positioning for list view */
+    margin-left: auto; /* Push to right side */
+}
+.fileActions {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+}
+.menuButton {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #808080;
+    border-radius: 4px;
+}
+
+.menuButton:hover {
+    background-color: #3a3a3a;
+}
+.popup {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+    z-index: 1000;
+    min-width: 120px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.popup button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background: none;
+    color: #333;
+    cursor: pointer;
+    text-align: left;
+}
+
+.popup button:hover {
+    background-color: #f0f0f0;
+}

@@ -1,0 +1,22 @@
+.viewControls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.viewButton {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #666;
+    border-radius: 4px;
+}
+
+.viewButton:hover {
+    background-color: #f0f0f0;
+}
+
+.viewButton.active {
+    background-color: #e0e0e0;
+    color: #333;
+}
