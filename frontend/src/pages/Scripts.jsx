@@ -1,8 +1,8 @@
 import React from 'react'
-
+import ScriptsLayout from '../layouts/ScriptsLayout'
 function Scripts() {
   return (
-    <div>Scripts</div>
+    <div><ScriptsLayout/></div>
   )
 }
 
