@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from editor.views.auth_views import *
-from editor.views.script_views import update_script, save_script,get_script,get_script_by_id
+from editor.views.script_views import *
 from django.http import JsonResponse
 from rest_framework_simplejwt.views import TokenRefreshView
 
@@ -31,5 +31,7 @@ urlpatterns = [
     path('scriptbyid/<int:script_id>',get_script_by_id),
     path('getScript',get_script),
     path('token/refresh/', token_refresh),
+    path('rename',rename),
+    path('delete',delete_script),
 ]
 
